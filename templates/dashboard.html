@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard | CRLF Vulnerable App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
-    <h1>Who are you?</h1>
-    <form method="GET" action="/dashboard">
-        <input type="text" name="user_input" placeholder="Enter your name" required>
-        <button type="submit">Submit</button>
-    </form>
-    
-    {% if message %}
-        <p>{{ message }}</p>
-    {% endif %}
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('login') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard-section">
+            <h1>Welcome to the Dashboard</h1>
+            <p>Who are you?</p>
+            <form method="GET" action="/dashboard" class="user-form">
+                <input type="text" name="user_input" placeholder="Enter your name" required>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+
+            {% if message %}
+                <p class="message">{{ message }}</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CRLF Vulnerable App. All rights reserved.</p>
+    </footer>
 </body>
 </html>
